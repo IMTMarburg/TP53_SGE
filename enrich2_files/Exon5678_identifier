@@ -1,0 +1,68 @@
+{
+  "conditions": [
+    {
+      "name": "Exon5678",
+      "selections": [
+        {
+          "libraries": [
+            {
+              "counts file": "enrich2_files/identifier_count_DMSO_1.tsv",
+              "identifiers": {},
+              "name": "DMSO_1",
+              "report filtered reads": false,
+              "timepoint": 0
+            },
+            {
+              "counts file": "enrich2_files/identifier_count_N3a_1.tsv",
+              "identifiers": {},
+              "name": "N3a_1",
+              "report filtered reads": false,
+              "timepoint": 1
+            }
+          ],
+          "name": "Ex5678_Rep1"
+        },
+        {
+          "libraries": [
+            {
+              "counts file": "enrich2_files/identifier_count_DMSO_2.tsv",
+              "identifiers": {},
+              "name": "DMSO_2",
+              "report filtered reads": false,
+              "timepoint": 0
+            },
+            {
+              "counts file": "enrich2_files/identifier_count_N3a_2.tsv",
+              "identifiers": {},
+              "name": "N3a_2",
+              "report filtered reads": false,
+              "timepoint": 1
+            }
+          ],
+          "name": "Ex5678_Rep2"
+        },
+        {
+          "libraries": [
+            {
+              "counts file": "enrich2_files/identifier_count_DMSO_3.tsv",
+              "identifiers": {},
+              "name": "DMSO_3",
+              "report filtered reads": false,
+              "timepoint": 0
+            },
+            {
+              "counts file": "enrich2_files/identifier_count_N3a_3.tsv",
+              "identifiers": {},
+              "name": "N3a_3",
+              "report filtered reads": false,
+              "timepoint": 1
+            }
+          ],
+          "name": "Ex5678_Rep3"
+        }
+      ]
+    }
+  ],
+  "name": "Exon5678_identifier",
+  "output directory": "results/Exon5678_identifier"
+}
