@@ -1,6 +1,7 @@
 # TP53_SGE
 
 
+
 ## Generating counts from fastqs
 
 The generation of mutant sequence counts from fastqs obtained via targeted sequencing
@@ -103,6 +104,6 @@ As log ratio method we used the library size (full) option.
 
 ## Calculating p-values
 
-We used the scores and standard errors of the enrich2 analysis to perform one-sided z-tests for each non-synonymous variant under the null hypothesis that the variant’s score is equal or lower from the weighted mean of the synonymous (WT-like) variants. The alternative hypothesis being that the scores obtained from non-synonymous variants are significantly higher. The z-tests are then adjusted for multiple hypothesis testing using Benjamini-Hochberg correction.
+We used the RFS-transformed scores and standard errors of the enrich2 analysis as calculated above (in [RFS_enrich.ipynb](RFS_enrich.ipynb)) to perform one-sided z-tests for each non-synonymous variant under the null hypothesis that the variant’s score is equal or lower from the weighted mean of the synonymous (WT-like) variants. The alternative hypothesis being that the scores obtained from non-synonymous variants are significantly higher. The z-tests are then adjusted for multiple hypothesis testing using Benjamini-Hochberg correction.
 
 The calculation can be found in this jupyter notebook: [z_statistics_enrich.ipynb](z_statistics_enrich.ipynb)
