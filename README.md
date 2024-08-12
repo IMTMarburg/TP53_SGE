@@ -2,6 +2,7 @@
 
 
 
+
 ## Generating counts from fastqs
 
 The generation of mutant sequence counts from fastqs obtained via targeted sequencing
@@ -91,15 +92,15 @@ The same transformation was performed on the Enrich2 scores, the corresponding c
 
 The Enrich2 package was used to perform an additional analysis on our variant counts.
 More precisely, we used Enrich2 in count-mode by supplying our variant counts as 
-"Identifiers Only" SeqLib. These can be found in the folder.
+"Identifiers Only" SeqLib. These can be found in the folder "enrich2_files".
 
 The analysis was run via the script [run_enrich.py](run_enrich.py), calling the command line option enrich2_cmd in a
 dedicated conda environment as instructed.
 
-For our analysis, we used the configuration file [Exon5678_identifier](enrich2_files/Exon5678_identifier), which is also found in the enrich2_files folder.
+For our analysis, we used the configuration file [Exon5678_identifier](enrich2_files/Exon5678_identifier), which is also found in the "enrich2_files" folder.
 
 We used Enrich2 log ratios as scoring method, with DMSO treated samples as T0 and N3a treated samples as T1.
-As log ratio method we used the library size (full) option.
+As normalization method we used the library size (full) option.
 
 
 ## Calculating p-values
