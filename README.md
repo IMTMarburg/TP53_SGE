@@ -2,8 +2,10 @@
 
 
 
+## Instructions for use
 
-## Generating counts from fastqs
+
+### Generating counts from fastqs
 
 The generation of mutant sequence counts from fastqs obtained via targeted sequencing
 involved several steps.
@@ -43,21 +45,7 @@ involved several steps.
    on a NixOS based server infrastructure.
 
 
-#### Dependencies
-
-The analysis depends on the following python packages that were installed on our python environment:
-
-- pandas
-- numpy
-- NGMerge: https://github.com/jsh58/NGmerge
-- cutadapt: https://github.com/marcelm/cutadapt
-- mbf: https://github.com/imTMarburg/mbf
-- pypipegraph2: https://github.com/TyberiusPrime/pypipegraph2/
-- mmdemultiplex: https://github.com/MarcoMernberger/mmdemultiplex
-- counting_sequences: https://github.com/MarcoMernberger/counting_sequences
-
-
-## Obtaining Relative Fitness Scores (RFS)
+### Obtaining Relative Fitness Scores (RFS)
 
 The different lengths of the targeted exons resulted in a bias that precluded a direct
 comparison of the raw counts or the relative frequencies of mutant sequences between the
@@ -88,7 +76,7 @@ The same transformation was performed on the Enrich2 scores, the corresponding c
 
 [RFS_enrich.ipynb](RFS_enrich.ipynb)
 
-## Performing Enrich2 analyses
+### Performing Enrich2 analyses
 
 The Enrich2 package was used to perform an additional analysis on our variant counts.
 More precisely, we used Enrich2 in count-mode by supplying our variant counts as 
@@ -103,8 +91,74 @@ We used Enrich2 log ratios as scoring method, with DMSO treated samples as T0 an
 As normalization method we used the library size (full) option.
 
 
-## Calculating p-values
+### Calculating p-values
 
 We used the RFS-transformed scores and standard errors of the enrich2 analysis as calculated above (in [RFS_enrich.ipynb](RFS_enrich.ipynb)) to perform one-sided z-tests for each non-synonymous variant under the null hypothesis that the variant’s score is equal or lower from the weighted mean of the synonymous (WT-like) variants. The alternative hypothesis being that the scores obtained from non-synonymous variants are significantly higher. The z-tests are then adjusted for multiple hypothesis testing using Benjamini-Hochberg correction.
 
 The calculation can be found in this jupyter notebook: [z_statistics_enrich.ipynb](z_statistics_enrich.ipynb)
+
+### How to use it 
+
+The listed python scripts should be run in a python environment with the 
+installed dependencies listed below.
+
+Jupyter notebooks can be run as-is inside any python environment with pandas 
+(version >= 2.0) and jupyter installed.
+
+
+
+## System requirements
+
+### Python
+
+All source code was run on python, version >= 3.8.
+
+
+### Dependencies
+
+The analysis depends on the following python packages that were installed on our python environment:
+
+- pandas (version = 2.1)
+- numpy (version = 1.26)
+- NGMerge: https://github.com/jsh58/NGmerge (version = 0.1)
+- cutadapt: https://github.com/marcelm/cutadapt (version = 4.1)
+- mbf: https://github.com/imTMarburg/mbf (version = 0.1)
+- pypipegraph2: https://github.com/TyberiusPrime/pypipegraph2/ (version = 3.0)
+- mmdemultiplex: https://github.com/MarcoMernberger/mmdemultiplex (version = 0.1)
+- counting_sequences: https://github.com/MarcoMernberger/counting_sequences (version = 0.1)
+
+The version numbers indicate the versions our scripts have been tested on.
+
+### Operating System
+
+The analyses were run on NixOS servers with the anysnake2 environment builder. 
+
+Jupyter notebooks were created and run on jupyter-server version >= 1.23.
+
+
+
+## Installation guide
+
+All github packages can simply be installed cloned in your local environment
+using the following syntax:
+
+```bash
+git clone <repo>
+```
+
+e.g. 
+
+```bash
+git clone https://github.com/TyberiusPrime/pypipegraph2.git
+```
+
+Pandas can be directly installed from pypi using
+
+```bash
+pip install pandas
+```
+
+The python scripts should be run in an Python environment with python version >= 3.8
+and the above listed dependency installed.
+
+Typical install time on an everage computer should be less than 5 minutes.
