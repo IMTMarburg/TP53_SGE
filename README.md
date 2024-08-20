@@ -37,7 +37,7 @@ involved several steps.
    of each synthetic sequence directly.
 
 
-#### The run-script
+#### The run script
 
    The [main.py](main.py) python script contains the complete run script used to create these counts.
    
