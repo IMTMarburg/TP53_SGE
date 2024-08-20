@@ -149,7 +149,7 @@ The analysis depends on the following python packages that were installed on our
 - mbf: https://github.com/imTMarburg/mbf (version = 0.1)
 - pypipegraph2: https://github.com/TyberiusPrime/pypipegraph2/ (version = 3.0)
 - mmdemultiplex: https://github.com/MarcoMernberger/mmdemultiplex (version = 0.5.0)
-- counting_sequences: https://github.com/MarcoMernberger/counting_sequences (version = 0.1)
+- counting_sequences: https://github.com/MarcoMernberger/counting_sequences (version = 0.5)
 - NGMerge: https://github.com/jsh58/NGmerge (version = 0.1)
 - cutadapt: https://github.com/marcelm/cutadapt (version = 4.1)
 
