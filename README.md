@@ -131,6 +131,8 @@ the incoming fastq files.
 Expected output is a folder with counted sequences and a summary table, that
 will list each of the Exon 5 input sequences with a count of 1.
 
+Execution time should be 10 seconds on an average computer.
+
 
 ## System requirements
 
