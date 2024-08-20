@@ -101,10 +101,35 @@ The calculation can be found in this jupyter notebook: [z_statistics_enrich.ipyn
 
 The listed python scripts should be run in a python environment with the 
 installed dependencies listed below.
+Adjust the variables in the section marked as "initialize variables"
+to the specifics of your folder structure, if needed.
 
 Jupyter notebooks can be run as-is inside any python environment with pandas 
 (version >= 2.0) and jupyter installed.
 
+
+### Demo
+
+the file [demo.py](demo.py) contains a demo on how to run the counting analysis.
+
+It can be run in a python environment with the appropriate dependencies installed by calling
+
+```bash
+python demo.py
+```
+
+on the command line.
+
+The neccessary input files are deposited in the demo folder:
+
+[NovaSeq_incoming_sequences_Exon5demo.xlsx](demo/NovaSeq_incoming_sequences_Exon5demo.xlsx) contains
+an excel sheet with example barcodes akin to those used in our analysis for the demultiplexing step.
+
+Another excel sheet in the same file contains a couple of predefined sequences that should be found in
+the incoming fastq files.
+
+Expected output is a folder with counted sequences and a summary table, that
+will list each of the Exon 5 input sequences with a count of 1.
 
 
 ## System requirements
@@ -120,45 +145,43 @@ The analysis depends on the following python packages that were installed on our
 
 - pandas (version = 2.1)
 - numpy (version = 1.26)
-- NGMerge: https://github.com/jsh58/NGmerge (version = 0.1)
-- cutadapt: https://github.com/marcelm/cutadapt (version = 4.1)
 - mbf: https://github.com/imTMarburg/mbf (version = 0.1)
 - pypipegraph2: https://github.com/TyberiusPrime/pypipegraph2/ (version = 3.0)
-- mmdemultiplex: https://github.com/MarcoMernberger/mmdemultiplex (version = 0.1)
+- mmdemultiplex: https://github.com/MarcoMernberger/mmdemultiplex (version = 0.5.0)
 - counting_sequences: https://github.com/MarcoMernberger/counting_sequences (version = 0.1)
+- NGMerge: https://github.com/jsh58/NGmerge (version = 0.1)
+- cutadapt: https://github.com/marcelm/cutadapt (version = 4.1)
 
 The version numbers indicate the versions our scripts have been tested on.
 
+In addition, the packages above have further dependencies:
+
+- pytest (version > 7.0.0)
+- setuptools (version > 38.3)
+
+
 ### Operating System
 
-The analyses were run on NixOS servers with the anysnake2 environment builder. 
+The analyses were run on NixOS servers with the anysnake2 package manager. 
 
 Jupyter notebooks were created and run on jupyter-server version >= 1.23.
 
 
 
-## Installation guide
+### Installation
 
-All github packages can simply be installed cloned in your local environment
-using the following syntax:
-
-```bash
-git clone <repo>
-```
-
-e.g. 
+Install pandas, numpy, mbf and pypipegraph2 from pypi via:
 
 ```bash
-git clone https://github.com/TyberiusPrime/pypipegraph2.git
+pip install <package>
 ```
 
-Pandas can be directly installed from pypi using
+The other packages can be ontained via github using:
 
 ```bash
-pip install pandas
+git clone <url>
 ```
 
-The python scripts should be run in an Python environment with python version >= 3.8
-and the above listed dependency installed.
+For cutadapt and NGmerge follow package instructions on how to build them.
 
 Typical install time on an everage computer should be less than 5 minutes.

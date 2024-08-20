@@ -1,0 +1,1 @@
+fastqc -t 1 --noextract --quiet -o results/lanes/Exon5_N3a_Exon_5_Lib_N3a_1_merged/FASTQC cache/lanes/Exon5_N3a_Exon_5_Lib_N3a_1_merged/input.fastq

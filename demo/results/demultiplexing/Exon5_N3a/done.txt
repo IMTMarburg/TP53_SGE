@@ -1,0 +1,10 @@
+Exon5_N3a
+Library: Exon5_N3a
+DemultiplexStrategy: <class 'mmdemultiplex.strategies.PE_Decide_On_Start_Trim_Start_End'>
+BarcodeDastaFrame:
+                 start_barcode end_barcode  trim_after_start  trim_before_end
+key                                                                          
+Exon_5_Lib_N3a_1        CTGGCA      CTGGCA                35               45
+Exon_5_Lib_N3a_2        GGTCGA      GGTCGA                35               45
+Exon_5_Lib_N3a_3        ACTGTG      ACTGTG                35               45
+demultiplexing done

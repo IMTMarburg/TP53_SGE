@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""main.py: This is the run script of our mutant sequence count analysis.
+"""
+demo.py: This is a demo of our mutant sequence count analysis.
+In the end it should produce a summary table that shows
+that 7 of the 8 demo input mutant sequences are found exactly once in
+sample Exon5_N3a_Exon_5_Lib_N3a_1.
+Sample Exon5_N3a_Exon_5_Lib_N3a_2 and Exon5_N3a_Exon_5_Lib_N3a_3 
+should contain a single sequence each.
 
-This script will produce the following folders/files:
+This script will produce the files in the folder demo_results:
 
 - demultiplexing: a folder that contains all demultiplexed fastqs
 - lanes: contains all fastqc controls foe samples and merged samples
@@ -20,28 +26,27 @@ This script will produce the following folders/files:
 
 - summary_counts.tsv will contain a summary of all predefined sequence counts over
   all samples.
+
+Execution time for the demo should be 10 to 12 seconds on an average computer.
 """
 
-__author__ = "Marco Mernberger"
-__copyright__ = "Copyright (c) 2020 Marco Mernberger"
-__license__ = "mit"
-
-
 import pypipegraph2 as ppg
-
 ppg.replace_ppg1()
 import pandas as pd
 import re
-import mbf
 import subprocess
 import sys
-import katha_tools
-import mmdemultiplex
+import mbf
+import os
 import counting_sequences
+import mmdemultiplex
+
+from pypipegraph2 import Job
 from typing import List, Dict, Callable
-from pypipegraph import Job
 from pathlib import Path
+from mmdemultiplex import get_barcode_df
 from counting_sequences import ngmerge
+
 
 ########################
 # instantiate pipegraph
@@ -54,32 +59,27 @@ ppg.new()
 # initialize variables
 #######################
 
-incoming_dir = "incoming"
-result_dir = "results"
-info_data_file = f"{incoming_dir}/NovaSeq_incoming_sequences_Exon5678.xlsx"
-barcode_sheet = "Übersicht"
-barcode_df = pd.read_excel(info_data_file, sheet_name=barcode_sheet, skiprows=2)
+incoming = Path("incoming")
+results = Path("results")
+info_data_file = incoming / "NovaSeq_incoming_sequences_Exon5demo.xlsx"
+barcode_sheet = "Overview"
+path_to_ngmerge = Path("../../code/NGmerge")
+barcode_df = pd.read_excel(info_data_file, sheet_name=barcode_sheet)
 barcode_df = barcode_df.fillna(method="ffill", axis=0)
 pool_col_name = "Library Name"
-sample_col_name = "Probenname"
+sample_col_name = "Probe name"
 fw_col_name = "Barcode fw"  # the
 rv_col_name = "Barcode rev"
 trim_start = "trim after start"  # we want to trim the constant part at the start
 trim_end = "trim before end"  # we want to trim the constant part at the end
 summary_output_file = results / "summary_counts.tsv"
+
 # The exons to be analyzed. Keys are file prefixes of the fastq files, values
 # are the names of the sequencing libraries.
 exons = {
-    "Exon5_DMSO": "Exon 5",
     "Exon5_N3a": "Exon 5",
-    "Exon6_DMSO": "Exon 6",
-    "Exon6_N3a": "Exon 6",
-    "Exon8_DMSO": "Exon 8",
-    "Exon8_N3a": "Exon 8",
-    "cDNA_Exon5": "Exon 5 cDNA",
-    "cDNA_Exon6": "Exon 6 cDNA",
-    "cDNA_Exon8": "Exon 8 cDNA",
 }
+
 
 ################################
 # declare the jobs for pipegraph

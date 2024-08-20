@@ -1,0 +1,1 @@
+Java is /nix/store/ls4mr7dhli1szxyp2n51m9jxv8fb4982-openjdk-16+36/bin/java
