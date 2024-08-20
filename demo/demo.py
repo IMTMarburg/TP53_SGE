@@ -36,6 +36,9 @@ import pandas as pd
 import re
 import subprocess
 import sys
+sys.path.append("../../code/counting_sequences/src")
+sys.path.append("../../code/mplots/src")
+sys.path.append("../../code/mmdemultiplex/src")
 import mbf
 import os
 import counting_sequences

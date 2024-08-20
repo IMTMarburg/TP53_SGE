@@ -133,7 +133,6 @@ will list each of the Exon 5 input sequences with a count of 1.
 
 Execution time should be 10 seconds on an average computer.
 
-
 ## System requirements
 
 ### Python
@@ -156,11 +155,7 @@ The analysis depends on the following python packages that were installed on our
 
 The version numbers indicate the versions our scripts have been tested on.
 
-In addition, the packages above have further dependencies:
-
-- pytest (version > 7.0.0)
-- setuptools (version > 38.3)
-
+In addition, the packages above may have further dependencies.
 
 ### Operating System
 
